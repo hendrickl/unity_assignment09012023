@@ -19,10 +19,7 @@ public class ObjSpawner : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            CancelInvoke();
-        }
+        StopInvokeRepeating();
     }
 
     void InstantiateObjFrontOfCam()
@@ -34,13 +31,6 @@ public class ObjSpawner : MonoBehaviour
         prefab.GetComponent<Rigidbody>().AddForce(Camera.main.transform.forward * -_thrust, ForceMode.Impulse);
     }
 
-    void InstantiateObjFromPool()
-    {
-        // Vector3 worldPosition = Camera.main.ScreenToWorldPoint(_spawnPosition);
-
-        // GameObject prefab = Instantiate(_objtToSpawn, worldPosition, Quaternion.identity);
-    }
-
     Vector3 ComputeWorldPosition(Vector3 _spawnPos)
     {
         return Camera.main.ScreenToWorldPoint(_spawnPos);
@@ -49,5 +39,13 @@ public class ObjSpawner : MonoBehaviour
     Vector3 ComputeSpawnPosition()
     {
         return new Vector3(Random.Range(0, Screen.width), Random.Range(0, Screen.height), _distanceToCam);
+    }
+
+    void StopInvokeRepeating()
+    {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            CancelInvoke();
+        }
     }
 }
