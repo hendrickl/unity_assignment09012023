@@ -13,10 +13,18 @@ public class ObjSpawner : MonoBehaviour
 
     void Start()
     {
-        InvokeRepeating("InstantiateObjFrontOf", _timeToInvoke, _repeatRate);
+        InvokeRepeating("InstantiateObjFrontOfCam", _timeToInvoke, _repeatRate);
     }
 
-    void InstantiateObjFrontOf()
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            CancelInvoke();
+        }
+    }
+
+    void InstantiateObjFrontOfCam()
     {
         _spawnPosition = new Vector3(Random.Range(0, Screen.width), Random.Range(0, Screen.height), _distanceToCam);
         Vector3 worldPosition = Camera.main.ScreenToWorldPoint(_spawnPosition);
