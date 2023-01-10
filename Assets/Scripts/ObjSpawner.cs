@@ -4,13 +4,14 @@ using UnityEngine;
 
 public class ObjSpawner : MonoBehaviour
 {
+    [SerializeField] private float _repeatRate = 3f;
     [SerializeField] private float _distanceToCam = 5.0f;
     [SerializeField] private GameObject _objtToSpawn;
     [SerializeField] private Vector3 _spawnPosition;
 
     void Start()
     {
-        InvokeRepeating("InstantiateObjFrontOf", 3f, 3f);
+        InvokeRepeating("InstantiateObjFrontOf", 3f, _repeatRate);
     }
     // Update is called once per frame
     void Update()
