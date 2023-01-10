@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class ObjSpawner : MonoBehaviour
 {
+    [SerializeField] private float _thrust;
     [SerializeField] private float _repeatRate = 3f;
     [SerializeField] private float _distanceToCam = 5.0f;
     [SerializeField] private GameObject _objtToSpawn;
@@ -13,10 +14,6 @@ public class ObjSpawner : MonoBehaviour
     {
         InvokeRepeating("InstantiateObjFrontOf", 3f, _repeatRate);
     }
-    // Update is called once per frame
-    void Update()
-    {
-    }
 
     void InstantiateObjFrontOf()
     {
@@ -24,5 +21,6 @@ public class ObjSpawner : MonoBehaviour
         Vector3 worldPosition = Camera.main.ScreenToWorldPoint(_spawnPosition);
 
         GameObject prefab = Instantiate(_objtToSpawn, worldPosition, Quaternion.identity);
+        prefab.GetComponent<Rigidbody>().AddForce(0, 0, -_thrust, ForceMode.Impulse);
     }
 }
