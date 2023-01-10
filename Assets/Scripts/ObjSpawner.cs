@@ -6,13 +6,14 @@ public class ObjSpawner : MonoBehaviour
 {
     [SerializeField] private float _thrust;
     [SerializeField] private float _repeatRate = 3f;
+    [SerializeField] private float _timeToInvoke = 3f;
     [SerializeField] private float _distanceToCam = 5.0f;
     [SerializeField] private GameObject _objtToSpawn;
     [SerializeField] private Vector3 _spawnPosition;
 
     void Start()
     {
-        InvokeRepeating("InstantiateObjFrontOf", 3f, _repeatRate);
+        InvokeRepeating("InstantiateObjFrontOf", _timeToInvoke, _repeatRate);
     }
 
     void InstantiateObjFrontOf()
