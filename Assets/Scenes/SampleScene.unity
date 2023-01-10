@@ -249,9 +249,8 @@ MonoBehaviour:
   _thrust: 3
   _repeatRate: 1.5
   _timeToInvoke: 3
-  _distanceToCam: 50
+  _distanceToCam: 100
   _objtToSpawn: {fileID: 4069373213365311830, guid: b3502d62ab7004c498474b46b17ed7d6, type: 3}
-  _spawnPosition: {x: 0, y: 0, z: 0}
 --- !u!4 &834108511
 Transform:
   m_ObjectHideFlags: 0
@@ -259,13 +258,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 834108509}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0.17364825, y: -0, z: -0, w: 0.9848078}
+  m_LocalPosition: {x: 5, y: 5, z: 5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &963194225
 GameObject:
@@ -460,5 +459,5 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

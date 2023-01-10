@@ -9,7 +9,6 @@ public class ObjSpawner : MonoBehaviour
     [SerializeField] private float _timeToInvoke = 3f;
     [SerializeField] private float _distanceToCam = 5.0f;
     [SerializeField] private GameObject _objtToSpawn;
-    // [SerializeField] private Vector3 _spawnPosition;
 
     private List<GameObject> _poolObj = new List<GameObject>();
 
@@ -28,8 +27,8 @@ public class ObjSpawner : MonoBehaviour
 
     void InstantiateObjFrontOfCam()
     {
-        Vector3 _spawnPosition = new Vector3(Random.Range(0, Screen.width), Random.Range(0, Screen.height), _distanceToCam);
-        Vector3 worldPosition = Camera.main.ScreenToWorldPoint(_spawnPosition);
+        Vector3 _spawnPosition = ComputeSpawnPosition();
+        Vector3 worldPosition = ComputeWorldPosition(_spawnPosition);
 
         GameObject prefab = Instantiate(_objtToSpawn, worldPosition, Quaternion.identity);
         prefab.GetComponent<Rigidbody>().AddForce(Camera.main.transform.forward * -_thrust, ForceMode.Impulse);
@@ -42,8 +41,13 @@ public class ObjSpawner : MonoBehaviour
         // GameObject prefab = Instantiate(_objtToSpawn, worldPosition, Quaternion.identity);
     }
 
-    void ComputeWorldPosition(Vector3 _spawnPos)
+    Vector3 ComputeWorldPosition(Vector3 _spawnPos)
     {
-        Vector3 worldPosition = Camera.main.ScreenToWorldPoint(_spawnPos);
+        return Camera.main.ScreenToWorldPoint(_spawnPos);
+    }
+
+    Vector3 ComputeSpawnPosition()
+    {
+        return new Vector3(Random.Range(0, Screen.width), Random.Range(0, Screen.height), _distanceToCam);
     }
 }
